@@ -24,8 +24,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-gradient inline-block w-full"> We Develop. We Design.</span>
-            <span className="text-gradient inline-block w-full">We Deliver.</span>
+          <span className="text-gradient inline-block w-full">
+            We Develop. We Design.<br />We Deliver.
+          </span>     
           </motion.h1>
           <motion.p
             className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto"
