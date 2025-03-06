@@ -48,9 +48,9 @@ export default function FeatureCarousel() {
   }
 
   return (
-    <div className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <div className="py-20 bg-gradient-to-b from-background to-secondary/20" id="why-us">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why Choose Us</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-foreground" >Why Choose Us</h2>
         <motion.div ref={carousel} className="cursor-grab overflow-hidden">
           <motion.div
             drag="x"

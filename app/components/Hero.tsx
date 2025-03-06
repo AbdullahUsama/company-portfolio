@@ -4,6 +4,13 @@ import { motion } from "framer-motion"
 import BackgroundPaths from "./background-paths"
 
 export default function Hero() {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="relative isolate overflow-hidden bg-background">
       <div className="absolute inset-0 -z-10 opacity-30">
@@ -37,12 +44,14 @@ export default function Hero() {
             <a
               href="#portfolio"
               className="apple-button"
+              onClick={(e) => handleScroll(e, 'portfolio')}
             >
               View Our Work
             </a>
             <a
               href="#contact"
               className="text-sm font-semibold leading-6 text-foreground"
+              onClick={(e) => handleScroll(e, 'contact')}
             >
               Get in Touch <span aria-hidden="true">→</span>
             </a>

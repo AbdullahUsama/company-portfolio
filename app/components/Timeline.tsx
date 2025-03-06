@@ -84,7 +84,7 @@ export default function Timeline() {
   })
 
   return (
-    <section ref={containerRef} className="py-20 bg-background overflow-hidden">
+    <section ref={containerRef} className="py-20 bg-background overflow-hidden" id="journey">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
@@ -92,7 +92,7 @@ export default function Timeline() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Our Journey</h2>
+          <h2 className="text-3xl font-bold text-foreground sm:text-4xl" >Our Journey</h2>
           <p className="mt-4 text-lg text-muted-foreground">The evolution of Flowers & Saints through the years</p>
         </motion.div>
 

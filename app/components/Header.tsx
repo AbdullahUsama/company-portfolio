@@ -10,12 +10,13 @@ import logo from "../../public/logo.png";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "About Us", href: "/about" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Process", href: "/process" },
-  { name: "Startup Insights", href: "/insights" },
-  { name: "Careers", href: "/careers" },
+  { name: "Services", href: "/#why-us", isScroll: true },
+  { name: "About Us", href: "/#journey", isScroll: true }, // Updated this line
+  { name: "Portfolio", href: "/#portfolio", isScroll: true }, // Add isScroll property
+  // { name: "Process", href: "/process" },
+  // { name: "Startup Insights", href: "/insights" },
+  // { name: "Careers", href: "/careers" },
+  { name: "Contact Us", href: "/#contact", isScroll: true },
 ]
 
 export default function Header() {
@@ -52,6 +53,18 @@ export default function Header() {
       })
     }
   }, [activeIndex])
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0], index: number) => {
+    if (item.isScroll) {
+      e.preventDefault();
+      const sectionId = item.href.split('#')[1];
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      setActiveIndex(index);
+    }
+  }
 
   return (
     <motion.header
@@ -90,26 +103,32 @@ export default function Header() {
 
           {/* Navigation Items */}
           <div className="relative flex space-x-[6px] items-center">
-            {navItems.map((item, index) => (
-              <Link
-                key={index}
-                ref={el => {
-                  if (el) {
-                    navRefs.current[index] = el
-                  }
-                }}                href={item.href}
-                className={`px-3 py-2 cursor-pointer transition-colors duration-300 h-[30px] ${
-                  index === activeIndex ? "text-primary" : "text-foreground/60"
-                }`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setActiveIndex(index)}
-              >
-                <div className="text-sm font-semibold leading-5 whitespace-nowrap flex items-center justify-center h-full">
-                  {item.name}
-                </div>
-              </Link>
-            ))}
+          {navItems.map((item, index) => (
+  <Link
+    key={index}
+    ref={el => {
+      if (el) {
+        navRefs.current[index] = el
+      }
+    }}
+    href={item.href}
+    className={`px-3 py-2 cursor-pointer transition-colors duration-300 h-[30px] ${
+      index === activeIndex ? "text-primary" : "text-foreground/60"
+    }`}
+    onMouseEnter={() => setHoveredIndex(index)}
+    onMouseLeave={() => setHoveredIndex(null)}
+    onClick={(e) => {
+      handleNavClick(e, item, index);
+      if (!item.isScroll) {
+        setActiveIndex(index);
+      }
+    }}
+  >
+    <div className="text-sm font-semibold leading-5 whitespace-nowrap flex items-center justify-center h-full">
+      {item.name}
+    </div>
+  </Link>
+))}
           </div>
         </div>
 
