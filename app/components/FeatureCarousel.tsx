@@ -5,29 +5,24 @@ import { motion, useAnimation, useMotionValue } from "framer-motion"
 
 const features = [
   {
-    title: "Minimal Design",
-    description: "Clean aesthetics that put your content in the spotlight.",
-    icon: "✨",
+    title: "Custom App Development",
+    description: "Scalable desktop and mobile applications (iOS & Android) for medium to large-scale startups & businesses.",
+    icon: "💻",
   },
   {
-    title: "Responsive",
-    description: "Flawless experiences across all devices and screen sizes.",
-    icon: "📱",
+    title: "AI Integration",
+    description: "Leveraging Artificial Intelligence to transform digital products with technological advancements in multiple niches.",
+    icon: "🤖",
   },
   {
-    title: "Fast Performance",
-    description: "Lightning-quick load times for smooth user interactions.",
+    title: "No-Code Platforms",
+    description: "Delivering time-sensitive & budget-effective solutions with all-in-one no-code stacks for small businesses.",
     icon: "⚡",
   },
   {
-    title: "Accessibility",
-    description: "Inclusive design practices for all users.",
-    icon: "🌈",
-  },
-  {
-    title: "SEO Optimized",
-    description: "Built to help your site rank higher in search results.",
-    icon: "🔍",
+    title: "Staff Augmentation",
+    description: "Collaborate with skilled professionals i-e designers, developers for your app development & long-term maintenance.",
+    icon: "👥",
   },
 ]
 
@@ -69,7 +64,7 @@ export default function FeatureCarousel() {
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="min-w-[300px] h-[400px] p-8 m-4 bg-background rounded-3xl shadow-lg flex flex-col justify-between hover-lift transition-all duration-300 ease-in-out border-2 border-transparent hover:border-primary/10"
+                className="min-w-[280px] h-[350px] p-6 m-3 bg-background rounded-3xl shadow-lg flex flex-col justify-between hover-lift transition-all duration-300 ease-in-out border-2 border-transparent hover:border-primary/10"
               >
                 <div>
                   <div className="text-4xl mb-4">{feature.icon}</div>
@@ -78,9 +73,7 @@ export default function FeatureCarousel() {
                 </div>
                 <div className="mt-4">
                   <a
-                    href="https://www.flowersandsaints.com.au"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#"
                     className="text-primary hover:underline"
                   >
                     Learn more →

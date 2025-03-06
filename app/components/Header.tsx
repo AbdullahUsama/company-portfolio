@@ -1,16 +1,57 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline"
+import Image from "next/image";
+import logo from "../../public/logo.png";
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "About Us", href: "/about" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Process", href: "/process" },
+  { name: "Startup Insights", href: "/insights" },
+  { name: "Careers", href: "/careers" },
+]
 
 export default function Header() {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [hoverStyle, setHoverStyle] = useState({})
+  const [activeStyle, setActiveStyle] = useState({ left: "0px", width: "0px" })
+  const navRefs = useRef<(HTMLAnchorElement | null)[]>([])
 
   useEffect(() => setMounted(true), [])
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      const hoveredElement = navRefs.current[hoveredIndex]
+      if (hoveredElement) {
+        const { offsetLeft, offsetWidth } = hoveredElement
+        setHoverStyle({
+          left: `${offsetLeft}px`,
+          width: `${offsetWidth}px`,
+        })
+      }
+    }
+  }, [hoveredIndex])
+
+  useEffect(() => {
+    const activeElement = navRefs.current[activeIndex]
+    if (activeElement) {
+      const { offsetLeft, offsetWidth } = activeElement
+      setActiveStyle({
+        left: `${offsetLeft}px`,
+        width: `${offsetWidth}px`,
+      })
+    }
+  }, [activeIndex])
 
   return (
     <motion.header
@@ -23,57 +64,55 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Flowers & Saints</span>
-            <img
-              className="h-8 w-auto"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/creative-SW6QDQbcVuwPgb6a2CYtYmRbsJa4k1.png"
+            <Image
+              className="h-10 w-auto"
+              src={logo}
               alt="Flowers & Saints Logo"
             />
           </Link>
         </div>
-        <div className="flex gap-x-12">
-          <Link
-            href="/"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/services"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Services
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            About Us
-          </Link>
-          <Link
-            href="/portfolio"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Portfolio
-          </Link>
-          <Link
-            href="/process"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Process
-          </Link>
-          <Link
-            href="/insights"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Startup Insights
-          </Link>
-          <Link
-            href="/careers"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Careers
-          </Link>
+        
+        <div className="relative flex items-center">
+          {/* Hover Highlight */}
+          <div
+            className="absolute h-[30px] transition-all duration-300 ease-out bg-primary/10 dark:bg-primary/20 rounded-[6px] flex items-center"
+            style={{
+              ...hoverStyle,
+              opacity: hoveredIndex !== null ? 1 : 0,
+            }}
+          />
+
+          {/* Active Indicator */}
+          <div
+            className="absolute bottom-[-6px] h-[2px] bg-primary transition-all duration-300 ease-out"
+            style={activeStyle}
+          />
+
+          {/* Navigation Items */}
+          <div className="relative flex space-x-[6px] items-center">
+            {navItems.map((item, index) => (
+              <Link
+                key={index}
+                ref={el => {
+                  if (el) {
+                    navRefs.current[index] = el
+                  }
+                }}                href={item.href}
+                className={`px-3 py-2 cursor-pointer transition-colors duration-300 h-[30px] ${
+                  index === activeIndex ? "text-primary" : "text-foreground/60"
+                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => setActiveIndex(index)}
+              >
+                <div className="text-sm font-semibold leading-5 whitespace-nowrap flex items-center justify-center h-full">
+                  {item.name}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
+
         <div className="flex flex-1 justify-end">
           {mounted && (
             <button
@@ -89,4 +128,3 @@ export default function Header() {
     </motion.header>
   )
 }
-

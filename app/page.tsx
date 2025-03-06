@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <WearYourStory />
+      {/* <WearYourStory /> */}
       <FeatureCarousel />
       <PortfolioGrid />
       <Timeline />
