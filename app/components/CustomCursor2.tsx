@@ -6,11 +6,26 @@ import { motion, useSpring } from "framer-motion"
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true)
 
   const cursorX = useSpring(0, { damping: 25, stiffness: 150 })
   const cursorY = useSpring(0, { damping: 25, stiffness: 150 })
 
+  // Add check for desktop device
   useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024 && !('ontouchstart' in window))
+    }
+    
+    checkIsDesktop()
+    window.addEventListener('resize', checkIsDesktop)
+    
+    return () => window.removeEventListener('resize', checkIsDesktop)
+  }, [])
+
+  useEffect(() => {
+    if (!isDesktop) return // Don't add listeners if not desktop
+
     const mouseMoveHandler = (event: MouseEvent) => {
       cursorX.set(event.clientX)
       cursorY.set(event.clientY)
@@ -38,7 +53,10 @@ export default function CustomCursor() {
       document.removeEventListener("mousemove", mouseMoveHandler)
       document.removeEventListener("mouseover", mouseOverHandler)
     }
-  }, [cursorX, cursorY])
+  }, [cursorX, cursorY, isDesktop])
+
+  // Don't render anything if not desktop
+  if (!isDesktop) return null
 
   return (
     <>
