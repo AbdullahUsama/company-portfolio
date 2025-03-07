@@ -22,7 +22,7 @@ export default function Home() {
       <Timeline />
       <Marquee />
       <ContactForm />
-      <NewsletterSubscribe />
+      {/* <NewsletterSubscribe /> */}
     </>
   )
 }

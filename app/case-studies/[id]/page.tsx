@@ -12,9 +12,31 @@ import image1_5 from "../../../public/case-studies/case1.6.png"
 import image1_6 from "../../../public/case-studies/case1.7.png"
 
 import image2 from "../../../public/case-studies/case2.png"
-import image3 from "../../../public/case-studies/case3.png"
-import image4 from "../../../public/case-studies/case4.png"
+import image2_1 from "../../../public/case-studies/case2.1.png"
+import image2_2 from "../../../public/case-studies/case2.2.png"
+import image2_3 from "../../../public/case-studies/case2.3.png"
+import image2_4 from "../../../public/case-studies/case2.4.png"
+import image2_5 from "../../../public/case-studies/case2.5.png"
 
+import image3 from "../../../public/case-studies/case3.png"
+import image3_1 from "../../../public/case-studies/case3.1.png"
+import image3_2 from "../../../public/case-studies/case3.2.png"
+
+import image4 from "../../../public/case-studies/case4.png"
+import image4_1 from "../../../public/case-studies/case4.1.png"
+import image4_2 from "../../../public/case-studies/case4.2.png"
+import image4_3 from "../../../public/case-studies/case4.3.png"
+
+import image5 from "../../../public/case-studies/case5.png"
+import image5_1 from "../../../public/case-studies/case5.1.png"
+import image5_2 from "../../../public/case-studies/case5.2.png"
+import image5_3 from "../../../public/case-studies/case5.3.png"
+import image5_4 from "../../../public/case-studies/case5.4.png"
+import image5_5 from "../../../public/case-studies/case5.5.png"
+import image5_6 from "../../../public/case-studies/case5.6.png"
+import image5_7 from "../../../public/case-studies/case5.7.png"
+import image5_8 from "../../../public/case-studies/case5.8.png"
+import image5_9 from "../../../public/case-studies/case5.9.png"
 
 type MediaItem = {
   type: 'image' | 'video';
@@ -85,125 +107,174 @@ type Project = {
         services: ["Web Development", "UI/UX Design", "Database Architecture"],
       
       tools: [ "Next.js", "TypeScript", "PostgreSQL","WebSocket","TailwindCSS"],
-      scopeOfWork: ["Research", "UI-UX Design", "Mobile App"],
+      scopeOfWork: ["Research", "UI-UX Design", "Web Development", "Tech Support "],
       year: "2023-2024",
-      targetAudience: "Intermediate Climbers",
-      industry: ["Sports", "Fitness", "Rock Climbing"],
+      targetAudience: "People in a Corporation",
+      industry: ["Software", "Tech", "Security"],
   },
   {
     id: "cms",
-    title: "Supwarden: Keychain Management & Real-Time Chat App",
-    description: "Clean and modern visual communication for a tech startup",
-    // imageUrl: image1,
-    // imageUrls: [image1, image1_1,image1_2,image1_3,image1_4,image1_5,image1_6],
+    title: "Next.js Landing Page with CMS & Google Maps Integration",
+    description: "A high-performance, fully responsive landing page for a startup, powered by modern web technologies.",
     mediaItems: [
-      { type: 'image', url: image2},
+      { type: 'image', url: image2 },
+      { type: 'image', url: image2_1 },
+      { type: 'image', url: image2_2 },
+      { type: 'image', url: image2_3 },
+      // { type: 'image', url: image2_4 },
+      { type: 'image', url: image2_5 },
     ],
     category: "Web Development",
-    overview: "Supwarden is a cutting-edge keychain management application designed to enhance the security, accessibility, and collaboration of credential sharing. It enables individuals and teams to securely organize, store, and share keychains while ensuring real-time synchronization and seamless communication. The platform integrates advanced user access controls, real-time chat features, and robust data portability options, making it ideal for both personal and professional environments. Whether you need to manage sensitive credentials within a team or securely access your keychains on the go, Supwarden provides a streamlined and intuitive solution..",
-    problem: "Teams often struggle with secure password sharing, relying on unsafe methods like spreadsheets or messaging apps. Traditional password managers lack real-time collaboration and granular access control, leading to inefficiencies. Additionally, data portability is limited, making it hard to migrate or back up credentials. Many solutions also fail to provide a fully optimized mobile experience.",
-    approach: "We built Supwarden with a security-first and collaboration-driven approach using Next.js, TypeScript, and Prisma. It supports role-based access control (RBAC) for fine-grained permissions, WebSocket-powered real-time communication, and audit logging for security tracking. A simple export/import system ensures easy data portability, while a fully responsive UI with TailwindCSS guarantees a seamless experience on all devices.",
+    overview: "Developed a fully responsive landing page using Next.js, designed to provide a seamless user experience with modern performance optimizations. The project includes a dynamic newsfeed powered by Sanity Headless CMS, ensuring real-time content updates with Incremental Static Regeneration (ISR). Integrated Google Maps to display location-based data, making the website more interactive and informative. Styled with Tailwind CSS for a clean and scalable design, and hosted on AWS Amplify for reliable deployment and scalability.",
+    problem: "Startups often need a fast, scalable, and easily maintainable landing page that supports dynamic content updates without affecting performance. Traditional CMS solutions can be bulky and slow, while manually managing static pages lacks flexibility. Ensuring real-time updates, a responsive UI, and smooth integrations while maintaining high performance can be challenging.",
+    approach: "Implemented a modern Jamstack architecture using Next.js for server-side rendering and static generation, combined with Sanity Headless CMS for seamless content management. Integrated on-demand Incremental Static Regeneration (ISR) to optimize performance and caching. Used GraphQL to fetch CMS data efficiently, and incorporated Google Maps for dynamic location rendering. Tailwind CSS ensured a fully responsive UI, while AWS Amplify provided reliable hosting and CI/CD automation.",
     mainFeatures: [
-      "Secure Keychain Management – Organize personal and shared keychains efficiently.",
-      "Granular Access Control – Assign and revoke permissions dynamically.",
-      "Real-Time Collaboration – Integrated chat and instant updates via WebSockets.",
-      "Data Portability – Easy export/import for backups and migration.",
-      "Cross-Device Accessibility – Fully responsive design for desktop and mobile."
+      "Fully Responsive UI – Optimized for mobile and desktop users.",
+      "Dynamic Newsfeed – Managed via Sanity CMS with real-time updates.",
+      "Google Maps Integration – Displays interactive location-based data.",
+      "Incremental Static Regeneration – Ensures fresh content with optimized caching.",
+      "Scalable Hosting – Deployed on AWS Amplify for high availability."
     ],
     stack: [
       "Next.js",
-      "TypeScript",
-      "Prisma",
-      "PostgreSQL",
-      "WebSocket",
-      "TailwindCSS"
+      "Sanity CMS",
+      "GraphQL",
+      "Tailwind CSS",
+      "AWS Amplify"
     ],
-    timeline: "3 months",
-    client: "Tech Startup",
-    services: ["Web Development", "UI/UX Design", "Database Architecture"],
-  
-  tools: [ "Next.js", "TypeScript", "PostgreSQL","WebSocket","TailwindCSS"],
-  scopeOfWork: ["Research", "UI-UX Design", "Mobile App"],
-  year: "2023-2024",
-  targetAudience: "Intermediate Climbers",
-  industry: ["Sports", "Fitness", "Rock Climbing"],
-},
+    timeline: "2 months",
+    client: "Startup",
+    services: ["Web Development", "UI/UX Design", "CMS Integration"],
+    tools: ["Next.js", "Sanity CMS", "GraphQL", "Tailwind CSS", "AWS Amplify"],
+    scopeOfWork: ["Research", "UI/UX Design", "Web Development"],
+    year: "2023-2024",
+    targetAudience: "Startups & Businesses",
+    industry: ["Technology", "Digital Services", "SaaS"]
+}
+,
 {
   id: "aws",
-  title: "Supwarden: Keychain Management & Real-Time Chat App",
-  description: "Clean and modern visual communication for a tech startup",
-  // imageUrl: image1,
-  // imageUrls: [image1, image1_1,image1_2,image1_3,image1_4,image1_5,image1_6],
+  title: "Real-Time IoT Monitoring Dashboard with AWS Integration",
+  description: "A scalable and interactive IoT dashboard for real-time sensor data visualization and industrial monitoring.",
   mediaItems: [
-    { type: 'image', url: image3},
+    { type: 'image', url: image3 },
+    { type: 'image', url: image3_1 },
+    { type: 'image', url: image3_2 },
   ],
   category: "Web Development",
-  overview: "Supwarden is a cutting-edge keychain management application designed to enhance the security, accessibility, and collaboration of credential sharing. It enables individuals and teams to securely organize, store, and share keychains while ensuring real-time synchronization and seamless communication. The platform integrates advanced user access controls, real-time chat features, and robust data portability options, making it ideal for both personal and professional environments. Whether you need to manage sensitive credentials within a team or securely access your keychains on the go, Supwarden provides a streamlined and intuitive solution..",
-  problem: "Teams often struggle with secure password sharing, relying on unsafe methods like spreadsheets or messaging apps. Traditional password managers lack real-time collaboration and granular access control, leading to inefficiencies. Additionally, data portability is limited, making it hard to migrate or back up credentials. Many solutions also fail to provide a fully optimized mobile experience.",
-  approach: "We built Supwarden with a security-first and collaboration-driven approach using Next.js, TypeScript, and Prisma. It supports role-based access control (RBAC) for fine-grained permissions, WebSocket-powered real-time communication, and audit logging for security tracking. A simple export/import system ensures easy data portability, while a fully responsive UI with TailwindCSS guarantees a seamless experience on all devices.",
+  overview: "Developed a real-time IoT monitoring dashboard using Next.js to visualize sensor data from Amazon DynamoDB with interactive graphs. The system tracks motor statuses and provides critical insights for industrial operations. AWS Lambda functions efficiently handle large data downloads, storing records in S3 buckets for secure retrieval. Designed for a startup, this solution ensures high performance, scalability, and robust data management.",
+  problem: "Industrial operations require real-time sensor monitoring, but traditional systems often suffer from slow data retrieval, inefficient storage solutions, and limited scalability. Handling large sensor data streams while ensuring real-time insights and cost-effective storage presents a significant challenge.",
+  approach: "Built a scalable IoT monitoring solution using Next.js for a responsive UI and real-time data visualization. Amazon DynamoDB was used for fast, low-latency storage of sensor data, while AWS Lambda functions processed and managed large data downloads. Secure data retrieval was ensured through AWS S3 storage. AWS Amplify provided reliable deployment and CI/CD automation, ensuring smooth scalability and maintenance.",
   mainFeatures: [
-    "Secure Keychain Management – Organize personal and shared keychains efficiently.",
-    "Granular Access Control – Assign and revoke permissions dynamically.",
-    "Real-Time Collaboration – Integrated chat and instant updates via WebSockets.",
-    "Data Portability – Easy export/import for backups and migration.",
-    "Cross-Device Accessibility – Fully responsive design for desktop and mobile."
+    "Real-Time Sensor Monitoring – Live updates from DynamoDB.",
+    "Interactive Data Visualization – Graphs and charts for insightful analytics.",
+    "Efficient Data Processing – AWS Lambda for handling large-scale downloads.",
+    "Secure Data Storage – Integration with AWS S3 for backups and retrieval.",
+    "Scalable & Cloud-Hosted – Fully deployed using AWS Amplify."
   ],
   stack: [
     "Next.js",
-    "TypeScript",
-    "Prisma",
-    "PostgreSQL",
-    "WebSocket",
-    "TailwindCSS"
+    "Amazon DynamoDB",
+    "AWS Lambda",
+    "AWS S3",
+    "AWS Amplify"
   ],
   timeline: "3 months",
   client: "Tech Startup",
-  services: ["Web Development", "UI/UX Design", "Database Architecture"],
-
-tools: [ "Next.js", "TypeScript", "PostgreSQL","WebSocket","TailwindCSS"],
-scopeOfWork: ["Research", "UI-UX Design", "Mobile App"],
-year: "2023-2024",
-targetAudience: "Intermediate Climbers",
-industry: ["Sports", "Fitness", "Rock Climbing"],
+  services: ["Web Development", "API Development", "Cloud Architecture"],
+  tools: ["Next.js", "Amazon DynamoDB", "AWS Lambda", "AWS S3", "AWS Amplify"],
+  scopeOfWork: ["Research", "Web Development", "Cloud Integration"],
+  year: "2023-2024",
+  targetAudience: "Industrial IoT & Smart Manufacturing",
+  industry: ["Technology", "IoT", "Industrial Automation"]
 },
+
 {
   id: "ai",
-  title: "Supwarden: Keychain Management & Real-Time Chat App",
-  description: "Clean and modern visual communication for a tech startup",
-  // imageUrl: image1,
-  // imageUrls: [image1, image1_1,image1_2,image1_3,image1_4,image1_5,image1_6],
+  title: "AI-Powered Image Generator with Stable Diffusion",
+  description: "A Next.js and TypeScript-based AI image generation platform leveraging Stable Diffusion on Vertex AI.",
   mediaItems: [
-    { type: 'image', url: image3},
+    { type: 'image', url: image4 },
+    { type: 'image', url: image4_1 },
+    { type: 'image', url: image4_2 },
+    { type: 'image', url: image4_3 },
   ],
-  category: "Web Development",
-  overview: "Supwarden is a cutting-edge keychain management application designed to enhance the security, accessibility, and collaboration of credential sharing. It enables individuals and teams to securely organize, store, and share keychains while ensuring real-time synchronization and seamless communication. The platform integrates advanced user access controls, real-time chat features, and robust data portability options, making it ideal for both personal and professional environments. Whether you need to manage sensitive credentials within a team or securely access your keychains on the go, Supwarden provides a streamlined and intuitive solution..",
-  problem: "Teams often struggle with secure password sharing, relying on unsafe methods like spreadsheets or messaging apps. Traditional password managers lack real-time collaboration and granular access control, leading to inefficiencies. Additionally, data portability is limited, making it hard to migrate or back up credentials. Many solutions also fail to provide a fully optimized mobile experience.",
-  approach: "We built Supwarden with a security-first and collaboration-driven approach using Next.js, TypeScript, and Prisma. It supports role-based access control (RBAC) for fine-grained permissions, WebSocket-powered real-time communication, and audit logging for security tracking. A simple export/import system ensures easy data portability, while a fully responsive UI with TailwindCSS guarantees a seamless experience on all devices.",
+  category: "AI Development",
+  overview: "Developed an AI-powered image generator using Next.js and TypeScript, integrating Stable Diffusion v1.4 via Vertex AI for seamless image creation. The platform features secure storage of generated images in Google Cloud Storage buckets and includes a history tab for easy access to past results. Robust IAM roles and GCP service account JSON keys ensure secure access control and data integrity.",
+  problem: "Generating high-quality AI images requires substantial computational power, efficient model deployment, and secure storage. Many solutions lack a seamless user experience, fail to store and retrieve previous generations efficiently, and require complex infrastructure setups.",
+  approach: "Built a scalable and secure AI image generator using Next.js for the frontend and Vertex AI for model deployment. Integrated Google Cloud Storage for managing generated images and enforced IAM-based access control for security. Optimized API interactions for smooth image retrieval and added a history tab for enhanced user experience.",
   mainFeatures: [
-    "Secure Keychain Management – Organize personal and shared keychains efficiently.",
-    "Granular Access Control – Assign and revoke permissions dynamically.",
-    "Real-Time Collaboration – Integrated chat and instant updates via WebSockets.",
-    "Data Portability – Easy export/import for backups and migration.",
-    "Cross-Device Accessibility – Fully responsive design for desktop and mobile."
+    "AI Image Generation – Stable Diffusion v1.4 via Vertex AI.",
+    "Cloud Storage – Securely store and retrieve generated images.",
+    "History Tracking – View previously generated images.",
+    "Secure Access Control – IAM roles and GCP service account integration.",
+    "Scalable Backend – Optimized Next.js and TypeScript setup."
   ],
   stack: [
     "Next.js",
     "TypeScript",
-    "Prisma",
-    "PostgreSQL",
-    "WebSocket",
-    "TailwindCSS"
+    "Stable Diffusion",
+    "Vertex AI",
+    "Google Cloud Storage",
+    "Tailwind CSS"
   ],
   timeline: "3 months",
   client: "Tech Startup",
-  services: ["Web Development", "UI/UX Design", "Database Architecture"],
-
-tools: [ "Next.js", "TypeScript", "PostgreSQL","WebSocket","TailwindCSS"],
-scopeOfWork: ["Research", "UI-UX Design", "Mobile App"],
-year: "2023-2024",
-targetAudience: "Intermediate Climbers",
-industry: ["Sports", "Fitness", "Rock Climbing"],
+  services: ["AI Model Integration", "Web Development", "Cloud Architecture"],
+  tools: ["Next.js", "Vertex AI", "Google Cloud Storage", "Tailwind CSS"],
+  scopeOfWork: ["Research", "AI Model Integration", "Web Development"],
+  year: "2023-2024",
+  targetAudience: "Artists, Designers, AI Enthusiasts",
+  industry: ["Artificial Intelligence", "Creative Technology", "Cloud Computing"]
+},
+{
+  id: "comm",
+  title: "E-Commerce Platform for Plants & Gardening Products",
+  description: "A modern e-commerce platform for plants and gardening essentials, featuring authentication, multi-language support, and secure payments.",
+  mediaItems: [
+    { type: "image", url: image5 },
+    { type: "image", url: image5_1 },
+    { type: "image", url: image5_2 },
+    { type: "image", url: image5_3 },
+    { type: "image", url: image5_4 },
+    { type: "image", url: image5_5 },
+    { type: "image", url: image5_6 },
+    { type: "image", url: image5_7 },
+    { type: "image", url: image5_8 },
+    { type: "image", url: image5_9 },
+  ],
+  category: "E-Commerce Development",
+  overview: "Developed a feature-rich e-commerce platform for selling plants and related products. The platform supports role-based authentication via Clerk.com, multi-language support (Urdu/English) with React-i18n, and secure payments through Stripe. Users can browse categorized products, switch between light and dark mode, and manage inventory via an admin panel with full CRUD functionality.",
+  problem: "Many plant e-commerce platforms lack seamless user authentication, efficient product management, and multilingual support. Additionally, secure payment integration and a responsive shopping experience are often missing.",
+  approach: "Built with a MERN stack (MongoDB, Express, React, Node.js), leveraging Clerk.com for role-based authentication, React-i18n for localization, and Stripe for secure transactions. Implemented product category filtering, dark mode, and an intuitive admin panel for easy product management.",
+  mainFeatures: [
+    "Role-Based Authentication – Clerk.com for secure access control.",
+    "Multi-Language Support – Urdu and English via React-i18n.",
+    "Secure Payments – Integrated Stripe for seamless transactions.",
+    "Product Category Filtering – Enhanced user shopping experience.",
+    "Dark Mode – User-friendly UI customization.",
+    "Admin Panel – Full CRUD functionality for product management."
+  ],
+  stack: [
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Clerk.com",
+    "React-i18n",
+    "Stripe"
+  ],
+  timeline: "2 months",
+  client: "E-Commerce Startup",
+  services: ["Web Development", "Authentication", "Payment Integration"],
+  tools: ["React", "MongoDB", "Node.js", "Express", "Stripe", "Clerk.com"],
+  scopeOfWork: ["Frontend & Backend Development", "UI/UX Design", "Admin Panel"],
+  year: "2023-2024",
+  targetAudience: "Plant Enthusiasts, Gardeners, Home Decor Shoppers",
+  industry: ["E-Commerce", "Gardening", "Home & Living"]
 }
+
+
 ];
 
 export default function CaseStudyPage({ params }: { params: { id: string } }) {
@@ -322,10 +393,10 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     <h3 className="text-lg font-semibold mb-2">Year</h3>
                     <p className="text-muted-foreground">{project.year}</p>
                   </div>
-                  <div>
+                  {/* <div>
                     <h3 className="text-lg font-semibold mb-2">Category</h3>
                     <p className="text-muted-foreground">Rock Climbing</p>
-                  </div>
+                  </div> */}
                   <div>
                     <h3 className="text-lg font-semibold mb-2">Target Audience</h3>
                     <p className="text-muted-foreground">{project.targetAudience}</p>
