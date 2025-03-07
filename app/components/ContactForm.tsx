@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import emailjs from "emailjs-com"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
@@ -21,6 +22,72 @@ const formSchema = z.object({
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isSent, setIsSent] = useState(false)
+
+
+  // Remove the second onSubmit function and update the first one:
+
+async function onSubmit(values: z.infer<typeof formSchema>) {
+  setIsSubmitting(true)
+  try {
+    // Send data to MongoDB
+    const response = await fetch("/api/form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        details: values.message,
+        phoneNumber: values.phoneNumber,
+        budget: values.budget,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit form to database');
+    }
+
+    // Send emails using EmailJS
+    const emailData = {
+      name: values.name,
+      email: values.email,
+      details: values.message,
+      phoneNumber: values.phoneNumber,
+      budget: values.budget,
+    };
+
+    // Send email to admin
+    await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_1!,
+      emailData,
+      process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
+    );
+
+    // Send confirmation email to user
+    await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_2!,
+      emailData,
+      process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
+    );
+ // Instead of alert, set isSent to true
+ form.reset();
+ setIsSent(true)
+ // Reset the button state after 3 seconds
+ setTimeout(() => {
+   setIsSent(false)
+ }, 2000)
+} catch (error) {
+ console.error("Error:", error);
+ alert("An error occurred while submitting the form. Please try again.");
+} finally {
+ setIsSubmitting(false);
+}
+}
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,16 +109,6 @@ export default function ContactForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true)
-    // Simulate API call
-    setTimeout(() => {
-      console.log(values)
-      setIsSubmitting(false)
-      form.reset()
-      alert("Thank you for your message. We'll get back to you soon!")
-    }, 2000)
-  }
 
   return (
     <section className="bg-background py-12 md:py-20" id="contact">
@@ -170,13 +227,15 @@ export default function ContactForm() {
                 )}
               />
 
-              <Button 
-                type="submit" 
-                className="w-full h-10 md:h-11 text-sm md:text-base" 
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
+<Button 
+  type="submit" 
+  className={`w-full h-10 md:h-11 text-sm md:text-base transition-colors duration-300 ${
+    isSent ? 'bg-green-500 hover:bg-green-600' : ''
+  }`}
+  disabled={isSubmitting || isSent}
+>
+  {isSubmitting ? "Sending..." : isSent ? "Sent!" : "Send Message"}
+</Button>
             </form>
           </Form>
         </motion.div>

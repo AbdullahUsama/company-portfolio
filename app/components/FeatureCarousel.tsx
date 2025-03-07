@@ -80,9 +80,9 @@ export default function FeatureCarousel() {
                   </p>
                 </div>
                 <div className="mt-4">
-                  <a href="#" className="text-primary hover:underline text-sm md:text-base">
+                  {/* <a href="#" className="text-primary hover:underline text-sm md:text-base">
                     Learn more →
-                  </a>
+                  </a> */}
                 </div>
               </div>
             ))}
@@ -100,23 +100,23 @@ export default function FeatureCarousel() {
               className="flex"
             >
               {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="min-w-[280px] sm:min-w-[320px] lg:min-w-[350px] h-[350px] p-6 m-3 bg-background rounded-3xl shadow-lg flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 ease-in-out border-2 border-transparent hover:border-primary/10"
-                >
-                  <div>
-                    <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-semibold mb-2 text-foreground">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </div>
-                  <div className="mt-4">
-                    <a href="#" className="text-primary hover:underline">
-                      Learn more →
-                    </a>
-                  </div>
-                </motion.div>
+               <motion.div
+               key={index}
+               className="min-w-[220px] sm:min-w-[280px] lg:min-w-[280px] h-[300px] p-5 m-2 bg-background rounded-3xl shadow-lg flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 ease-in-out border-2 border-transparent hover:border-primary/10"
+             >
+               <div>
+                 <div className="text-4xl mb-4">{feature.icon}</div>
+                 <h3 className="text-xl font-semibold mb-2 text-foreground">
+                   {feature.title}
+                 </h3>
+                 <p className="text-muted-foreground">{feature.description}</p>
+               </div>
+               <div className="mt-4">
+                 {/* <a href="#" className="text-primary hover:underline">
+                   Learn more →
+                 </a> */}
+               </div>
+             </motion.div>
               ))}
             </motion.div>
           </motion.div>
