@@ -1,16 +1,32 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
 export default function CustomCursor() {
+  const [isDesktop, setIsDesktop] = useState(true)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
   const smoothX = useSpring(mouseX, { stiffness: 150, damping: 20 })
   const smoothY = useSpring(mouseY, { stiffness: 150, damping: 20 })
 
+  // Check for desktop device
   useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024 && !('ontouchstart' in window))
+    }
+    
+    checkIsDesktop()
+    window.addEventListener('resize', checkIsDesktop)
+    
+    return () => window.removeEventListener('resize', checkIsDesktop)
+  }, [])
+
+  // Mouse movement effect
+  useEffect(() => {
+    if (!isDesktop) return // Don't add listeners if not desktop
+
     const updateMousePosition = (e: MouseEvent) => {
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
@@ -18,7 +34,10 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", updateMousePosition)
     return () => window.removeEventListener("mousemove", updateMousePosition)
-  }, [mouseX, mouseY])
+  }, [mouseX, mouseY, isDesktop])
+
+  // Don't render anything if not desktop
+  if (!isDesktop) return null
 
   return (
     <motion.div
